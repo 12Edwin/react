@@ -7,7 +7,7 @@ export const createSale = async (values) =>{
         const email = await getEmail(user.token,user.id);
         console.log({...values, email : email});
         const token = user.token;
-        const url = 'http://localhost:3000/api/sale/';
+        const url = 'http://44.214.206.7:3000/api/sale/';
 
         const response = await axios.post(url,{...values, email : email},{
             headers:{
@@ -21,7 +21,7 @@ export const createSale = async (values) =>{
 }
 
 const getEmail = async (token,id) =>{
-    const url = `http://localhost:3000/api/user/${id}`;
+    const url = `http://44.214.206.7:3000/api/user/${id}`;
     const response = await axios.get(url,{
         headers:{
             'x-token' : token
