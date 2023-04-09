@@ -9,6 +9,7 @@ import * as Yup from 'yup';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import './Login.css'
+import image from './login.svg'
 
 import PropTypes from 'prop-types';
 import { Input } from 'reactstrap';
@@ -61,27 +62,13 @@ export const LoginComponent = ({ onData, onRegister }) => {
         <MDBTabsPane show={justifyActive === 'tab1'} >
 
           <div className="text-center mb-3" >
-            <p>Sign in with:</p>
+            
 
             <div className='d-flex justify-content-between mx-auto' style={{ width: '40%' }}>
-              <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                <MDBIcon fab icon='facebook-f' size="sm" />
-              </MDBBtn>
-
-              <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                <MDBIcon fab icon='twitter' size="sm" />
-              </MDBBtn>
-
-              <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                <MDBIcon fab icon='google' size="sm" />
-              </MDBBtn>
-
-              <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                <MDBIcon fab icon='github' size="sm" />
-              </MDBBtn>
+              <img src={image} width={'80%'} className='mt-2 mb-2'/>
             </div>
 
-            <p className="text-center mt-3">or:</p>
+            
           </div>
           {errors && <div className="alert alert-danger" style={{ textAlign: "center" }}>{errors}</div>}
 
@@ -93,13 +80,13 @@ export const LoginComponent = ({ onData, onRegister }) => {
               value={password} onChange={text => setPassword(text.target.value)} />
 
             <div className="d-flex justify-content-between mx-4 mb-4">
-              <a href="!#">Forgot password?</a>
+              
             </div>
 
             <MDBBtn className="mb-4 w-100" type='submit'> {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "Sign in"}</MDBBtn>
           </form>
 
-          <p className="text-center">Not a member? <a href="#!">Register</a></p>
+          <p className="text-center">Not a member? <a href='#' onClick={()=>handleJustifyClick('tab2')}>Register</a></p>
 
         </MDBTabsPane>
 

@@ -5,6 +5,7 @@ import { UserRouter } from "../user/routes/UserRoutes"
 import { PrivateRouteAdmin } from "./PrivateRouteAdmin"
 import { PrivateRouteUser } from "./PrivateRouteUser"
 import { PublicRoute } from "./PublicRoute"
+import Index from "../"
 import LoginPage  from "../auth/pages/LoginPage"
 
 export const AppRouter = () =>{
@@ -12,7 +13,7 @@ export const AppRouter = () =>{
         <>
             
             <Routes>
-                <Route path="/" element={<>Bienvenido a la biblioteca</>} />
+                <Route path="/" element={<Index/>} />
                 
                 <Route path="/login" element={
                     <PublicRoute>
