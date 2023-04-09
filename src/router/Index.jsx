@@ -6,7 +6,7 @@ import image from './indexIcon.svg'
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-const Index = () => {
+export const Index = () => {
 
     const navigation = useNavigate();
 
@@ -48,5 +48,3 @@ const Index = () => {
     </div>
     )
 }
-
-export default Index;
