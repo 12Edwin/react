@@ -9,7 +9,7 @@ const user = JSON.parse (localStorage.getItem('user'));
 export const getUser = async(id) =>{
     try{
         const token = await user.token;
-        const url = `http://44.214.206.7:3000/api/user/${id}`;
+        const url = `https://libraryservice-production.up.railway.app/api/user/${id}`;
         const response = await axios.get(url,{
             headers:{
                 'x-token': token
