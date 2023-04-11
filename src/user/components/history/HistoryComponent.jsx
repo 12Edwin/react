@@ -48,8 +48,12 @@ export const HistoryComponent = () => {
       setLoading(false);
   }
 
+  const reload = ()=>{
+    fillHistory();
+  }
+
   useEffect(() => {
-    fillHistory()
+    reload()
   }, [])
 
 
@@ -94,7 +98,7 @@ export const HistoryComponent = () => {
       preConfirm: async () => {
         const result = await onConfirm(type, id);
         if (result) {
-          (await Swal.fire({title:'¡Listo!', text:'La transacción se ha completado exitosamente.', icon:'success'}).then(()=> window.location.reload()))
+          (await Swal.fire({title:'¡Listo!', text:'La transacción se ha completado exitosamente.', icon:'success'}).then(()=> reload()))
 
         } else {
           Swal.fire('Error', 'Ocurrió un error al procesar la transacción', 'error');

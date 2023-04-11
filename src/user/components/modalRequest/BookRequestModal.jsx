@@ -4,10 +4,12 @@ import { useSpring, animated } from 'react-spring';
 import image from '../../../assets/img/book.jpg'
 import "./ModalRequest.css"
 import { createRequest } from '../../helpers/createRequest';
+import { useNavigate } from 'react-router-dom';
 
-export const BookRequestModal = ({ data, open }) => {
+export const BookRequestModal = ({ data, open, reload = ()=> console.log('desde detalles') }) => {
   const [inputValue, setInputValue] = useState('');
   const currentDate = new Date().toISOString().split("T")[0];
+  const navigate = useNavigate();
 
   useEffect(() => {
     handleModalOpen(data)
@@ -36,7 +38,7 @@ export const BookRequestModal = ({ data, open }) => {
         <div class="col-6">
           <div style="" class="carta">
             <div  style="max-width: 100%; height:320px">
-              <img  src="${book.img || image}" class="carta-image" style="width:200px"/>
+              <img  src="${ "https://libraryservice-production.up.railway.app/api/book/image/" + book.img || image}" class="carta-image" style="width:200px"/>
             </div>
             <div>
                 <h5 class="card-title">Special title treatment</h5>
@@ -92,7 +94,7 @@ export const BookRequestModal = ({ data, open }) => {
               title: '¡Transacción exitosa!',
               timer: 1500,
               showConfirmButton: false,
-            }).then(()=> window.location.reload());
+            }).then(()=> {reload(); navigate('/user/stock')});
           }else{
             // Mostrar mensaje de error
             Swal.fire({

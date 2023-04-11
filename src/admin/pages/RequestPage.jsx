@@ -11,8 +11,12 @@ export const RequestPage = ()=>{
     const [apiError, setApiError] = useState(false);
     const [requests, setRequests] = useState([]);
 
-    useEffect(() =>{
+    const reload = () =>{
         fillRequests();
+    }
+
+    useEffect(() =>{
+        reload();
     },[]);
 
     const fillRequests = async () =>{
@@ -29,6 +33,6 @@ export const RequestPage = ()=>{
     }
 
     return( loading ? <LoadingComponent /> : apiError ? <SomeProblems/> :
-        <Request requests={requests}/>
+        <Request requests={requests} reload={reload}/>
     )
 }

@@ -57,9 +57,13 @@ export const BookStack = ({reload}) => {
     setCategories(response);
   }
   
-  useEffect(() => {
+  const reloads = () =>{
     fillBooks();
     getRequests();
+  }
+
+  useEffect(() => {
+    reloads();
   }, []);
 
   const openModal = (datos) =>{
@@ -117,14 +121,14 @@ export const BookStack = ({reload}) => {
           
           <Card style={{ width: '18rem', margin: '15px', display:'flex', alignItems:'center' }}>
             <Card.Header style={{height: '330px'}}>
-            <Card.Img variant="top" style={{width:'200px'}} src={book.img ? book.img : image}/>
+            <Card.Img variant="top" style={{width:'200px'}} src={book.img ? "https://libraryservice-production.up.railway.app/api/book/image/" + book.img : image}/>
             </Card.Header>
             <Card.Body>
                 <Card.Title>{book.name}</Card.Title>
                 <Card.Text>
                 <strong>Author:</strong> {book.author}
                 </Card.Text>
-                <Button style={{fontSize:'10px', display: 'flex'}} variant="contained" color="default" onClick={()=>{navigate(`/user/details/${book.uid}`); reload(true)}} endIcon={<VisibilityRounded />}>Ver más</Button>
+                <Button style={{fontSize:'10px', display: 'flex'}} variant="contained" color="default" onClick={()=>{navigate(`/user/details/${book.uid}`);}} endIcon={<VisibilityRounded />}>Ver más</Button>
             </Card.Body>
           </Card>
           <Card style={{ width: '18rem', margin: '1rem', padding:'0px' }}>
@@ -139,10 +143,10 @@ export const BookStack = ({reload}) => {
               </Row>    
           </Card.Body>
           </Card>{ openRequest &&
-          <BookRequestModal data={data} open ={setOpenRequest}/>
+          <BookRequestModal reload={reloads} data={data} open ={setOpenRequest}/>
           }
           { openBuy &&
-          <BuyBookComponent isOpen={openBuy} open={setOpenBuy} data={data}/>
+          <BuyBookComponent reload={reloads} isOpen={openBuy} open={setOpenBuy} data={data}/>
           }
           </>)}
           </div>

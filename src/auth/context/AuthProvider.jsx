@@ -2,6 +2,7 @@ import { useReducer } from "react"
 import { types } from "../types/Types"
 import { AuthContext } from "./AuthContext"
 import { authReducer } from "./authReducer"
+import { useNavigate } from "react-router-dom"
 
 
 const init = () =>{
@@ -16,6 +17,7 @@ const init = () =>{
 export const AuthProvider  = ({children}) =>{
 
     const [authState, dispatch] = useReducer(authReducer, {}, init);
+    const navigate = useNavigate();
 
     const login = (data) =>{
         const user = {id: data.user.uid, name: data.user.name, role: data.user.role, token:data.token}
@@ -34,6 +36,7 @@ export const AuthProvider  = ({children}) =>{
             type: types.logout
         };
         dispatch(action);
+        navigate('/login');
     }
     
 

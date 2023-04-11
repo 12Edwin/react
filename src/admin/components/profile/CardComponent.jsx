@@ -40,8 +40,12 @@ export const CardComponent = () => {
         }
         setLoading(false);
     }
+
+    const reload = () =>{
+        fillUser();
+    }
     useEffect(() => {
-        fillUser()
+        reload()
     }, []);
 
     const onUpdateUser = async (data) => {
@@ -58,7 +62,7 @@ export const CardComponent = () => {
                 '¡Actualizado!',
                 'El usuario ha sido actualizado correctamente.',
                 'success'
-            ).then(() => window.location.reload())
+            ).then(() => reload())
         }
     };
 

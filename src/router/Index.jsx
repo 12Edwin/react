@@ -15,23 +15,23 @@ export const Index = () => {
     }
 
     return(
-        <div className="container">
+        <div className="container contenedor">
       <motion.div
-        className="content"
+        className="content-index"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
       >
-        <h1 className="title">Bienvenido a LibraryStorm</h1>
-        <p className="description">
+        <h1 className="title-index">Bienvenido a LibraryStorm</h1>
+        <p className="description-index">
           El lugar donde la lectura prevalece
         </p>
-        <button onClick={onStart} style={{backgroundColor:'#6aaaea', color:'whitesmoke'}} className="btn">
+        <button onClick={onStart} style={{backgroundColor:'#6aaaea', color:'whitesmoke'}} className="btn btn-index">
           Empezar <FontAwesomeIcon icon={faArrowRight} />
         </button>
       </motion.div>
       <motion.div
-        className="illustration"
+        className="illustration-index"
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}

@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 
 import './ModalEdit.css';
 
-export const BookEditModal = ({ open, onOpen, data }) => {
+export const BookEditModal = ({ open, onOpen, data, reload }) => {
 
   const [formStep, setFormStep] = useState(1);
   const [categories, setCategories] = useState([]);
@@ -78,7 +78,7 @@ export const BookEditModal = ({ open, onOpen, data }) => {
       icon: 'success',
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'OK',
-    }).then(()=> window.location.reload());
+    }).then(()=> {reload(); onOpen(false)});
   }
   const resultFail = () => {
     Swal.fire({

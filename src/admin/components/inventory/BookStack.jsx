@@ -54,15 +54,14 @@ export const BookStack = () => {
     setLoading(false);
   }
 
-  const fillCategories = async () =>{
-    const response = await getCategories();
-    setCategories(response);
-  }
-  
-  useEffect(() => {
+  const reload = () =>{
     fillBooks();
     getRequests();
     getSalesGral();
+  }
+  
+  useEffect(() => {
+    reload();
   }, []);
 
   const openModalRemove = (id) =>{
@@ -81,7 +80,7 @@ export const BookStack = () => {
             '¡Felicidades!',
             'La transacción se ha realizado con éxito.',
             'success'
-          ).then(() => window.location.reload());
+          ).then(() => reload());
         }else{
           Swal.fire(
             '¡Error!',
@@ -144,7 +143,7 @@ export const BookStack = () => {
           
           <Card style={{ width: '18rem', margin: '15px', display:'flex', alignItems:'center' }}>
             <Card.Header style={{height: '330px'}}>
-            <Card.Img variant="top" style={{width:'200px'}} src={book.img ? book.img : image}/>
+            <Card.Img variant="top" style={{width:'200px'}} src={book.img ? "https://libraryservice-production.up.railway.app/api/book/image/"+book.img : image}/>
             </Card.Header>
             <Card.Body>
                 <Card.Title>{book.name}</Card.Title>
@@ -174,7 +173,7 @@ export const BookStack = () => {
               </Row>    
           </Card.Body>
           </Card>
-           <BookEditModal open={openModal} onOpen={setOpenModal} data={data}/>
+           <BookEditModal open={openModal} onOpen={setOpenModal} data={data} reload = {reload}/>
           </>)}
           </div>
         )

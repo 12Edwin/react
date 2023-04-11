@@ -13,10 +13,12 @@ import "./BuyBook.css";
 
 import { MDBBtn } from "mdb-react-ui-kit";
 import { createSale } from "../../helpers/createSale";
+import { useNavigate } from "react-router-dom";
 
-export const BuyBookComponent = ({ data, open }) => {
+export const BuyBookComponent = ({ data, open, reload = ()=> console.log('desde detalles') }) => {
 
   const [inputValue, setInputValue] = useState('');
+  const navigate = useNavigate();
 
   const onError = () => {
     Swal.fire({
@@ -31,7 +33,7 @@ export const BuyBookComponent = ({ data, open }) => {
       icon: 'success',
       title: 'Tarea completada!',
       text: '¡Felicidades, tu pago se ha realizado con éxito!'
-    }).then(() => window.location.reload());
+    }).then(() => {reload(); navigate('/user/stock')});
   }
 
   const onBookSale = async (pay) => {
@@ -62,7 +64,7 @@ export const BuyBookComponent = ({ data, open }) => {
         <div class="col-6">
           <div style="" class="carta">
             <div  style="max-width: 100%; height:320px">
-              <img  src="${book.img || image}" class="carta-image" style="width:200px"/>
+              <img  src="${ "https://libraryservice-production.up.railway.app/api/book/image/" + book.img || image}" class="carta-image" style="width:200px"/>
             </div>
             <div>
                 <h5 class="card-title">Special title treatment</h5>

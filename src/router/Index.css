@@ -1,4 +1,4 @@
-.container {
+.conenedor {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,7 +6,7 @@
     background-color: #f8f9fa;
   }
   
-  .content {
+  .content-index {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -21,20 +21,20 @@
     color: whitesmoke;
   }
   
-  .title {
+  .title-index {
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 1rem;
   }
   
-  .description {
+  .description-index {
     font-size: 1.2rem;
     color: whitesmoke;;
     margin-bottom: 2rem;
 
   }
   
-  .btn {
+  .btn-index {
     display: flex;
     align-items: center;
     font-size: 1rem;
@@ -47,19 +47,19 @@
     transition: background-color 0.3s ease;
   }
   
-  .btn:hover {
+  .btn-index:hover {
     background-color: whitesmoke;
     color: #0366d6;
   }
   
-  .illustration {
+  .illustration-index {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
-  .img {
+  .img-index {
     max-width: 50%;
   }
   

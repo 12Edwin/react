@@ -51,7 +51,7 @@ export const DetailsBookComponent = () => {
 
     const charge = () =>{
         setReload(false)
-        window.location.reload();
+        fillBook()
     }
 
     const onBuy = () =>{
@@ -70,7 +70,7 @@ export const DetailsBookComponent = () => {
             <Col md = {5}>
                 <div className='card' style={{ width: '100%', margin: '1rem' }}>
                     <div style={{height:'480px'}}>
-                        <CardMedia component="img"  image={book.img ? book.img : image} />
+                        <CardMedia component="img"  image={book.img ? "https://libraryservice-production.up.railway.app/api/book/image/" + book.img : image} />
                     </div>
                     <CardContent>
                         <CardTitle>{book.name}</CardTitle>
@@ -117,10 +117,10 @@ export const DetailsBookComponent = () => {
         }
     </div>
     { openBuy &&
-    <BuyBookComponent open={setOpenBuy} data={book}/>
+    <BuyBookComponent setOpenBuy={setOpenBuy} open={setOpenBuy} data={book}/>
     }
     { openRequest &&
-    <BookRequestModal open={setOpenRequest} data={book} />
+    <BookRequestModal setOpenRequest={setOpenRequest} open={setOpenRequest} data={book} />
     }
     <BookStack reload = {setReload}/>
     { reload &&

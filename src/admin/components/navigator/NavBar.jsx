@@ -14,7 +14,6 @@ export const NavBarAdmin = () => {
   const navigate = useNavigate();
   const onLogout = () =>{
     logout();
-    navigate('/login',{replace:true})
   }
   return (
     <>

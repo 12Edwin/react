@@ -8,7 +8,7 @@ const MySwal = withReactContent(Swal);
 import {updateRequest}  from '../../helpers/updateRequest'
 
 
-export const Request = ({ requests = [] }) => {
+export const Request = ({ requests = [], reload }) => {
 
   const [filteredUsers, setFilteredUsers] = useState(requests);
   const [searchTerm, setSearchTerm] = useState('');
@@ -58,7 +58,7 @@ export const Request = ({ requests = [] }) => {
       title: '¡Éxito!',
       text: 'Los datos se han guardado correctamente.',
       icon: 'success'
-    }).then(() => window.location.reload());
+    }).then(() => reload());
   }
 
   const onFail = () =>{

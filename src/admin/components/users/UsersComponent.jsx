@@ -3,7 +3,7 @@ import './UserTable.css';
 import {userDisabled} from '../../helpers/userDisabled';
 import Swal from 'sweetalert2';
 
-export const UsersComponent = ({ users }) => {
+export const UsersComponent = ({ users, reload }) => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [filteredUsers, setFilteredUsers] = useState(users);
   const [searchTerm, setSearchTerm] = useState('');
@@ -45,7 +45,7 @@ export const UsersComponent = ({ users }) => {
       title: '¡Éxito!',
       text: 'Los datos se han guardado correctamente.',
       icon: 'success'
-    }).then(() => window.location.reload());
+    }).then(() => reload());
   }
 
   const onFail = () =>{

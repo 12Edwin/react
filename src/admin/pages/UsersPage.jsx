@@ -22,14 +22,17 @@ export const UsersPage = () =>{
         setLoading(false);
       }
     
-      useEffect(() =>{
+      const reload = ()=>{
         fillUsers();
+      }
+      useEffect(() =>{
+        reload();
       },[]);
 
     return(
         <div className='col-11 mt-5' style={{ paddingLeft: "300px" }}>
             { loading ? <LoadingComponent/> : apiError ? <SomeProblems/> :
-            <UsersComponent users={users}/>
+            <UsersComponent users={users} reload={reload}/>
             }
         </div>
     )
